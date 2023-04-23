@@ -1,0 +1,73 @@
+﻿@model IEnumerable<InfoModel>
+@using Humanizer
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Ledighetsöversikt</h1>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+        <p>
+            Find by month: <input type="month" name="SearchDate" value="@ViewData["DateFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            @Html.DisplayNameFor(model=>model.FirstName)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model=>model.LastName)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model=>model.HolidayType)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model=>model.Start)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model=>model.Stop)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model=>model.MadeAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.HolidayType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Start)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Stop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.MadeAt)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
